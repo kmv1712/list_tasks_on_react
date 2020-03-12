@@ -10,4 +10,19 @@
         border-radius: 10px;
         padding: 18px;
     }
+
+    .button{
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    &-colors{
+        margin-top: 15px;
+    }
+
+    .badge{
+        width: 20px;
+        height: 20px;
+        position: static;
+    }
 }

@@ -28,6 +28,24 @@
   }
 }
 
+.button{
+  background: #4dd599;
+  border-radius: 4px;
+  color: #fff;
+  border: 0;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover{
+    background: darken(#4dd599, 5%);
+  }
+
+  &:active{
+    background: darken(#4dd599, 5%);
+  }
+}
+
+
 .field{
   background: #ffffff;
   border: 1px solid #efefef;

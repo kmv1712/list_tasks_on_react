@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import List from '../List';
+import Badge from '../Badge';
 
 import './AddButtonList.scss';
 
-const AddButtonList = () => {
+const AddList = ({ colors }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
 
   return(
@@ -25,9 +26,15 @@ const AddButtonList = () => {
       />
       {visiblePopup && (<div className="add-list__popup">
         <input className="field" type="text" placeholder="Название списка"/>
+      <div className="add-list__popup-colors">
+          {colors.map(color => (
+            <Badge key={ color.id } color={ color.name }/>
+          ))}
+      </div>
+      <button className="button">Добавить</button>
       </div>)}
       </div>
 )};
 
-export default AddButtonList
+export default AddList
     

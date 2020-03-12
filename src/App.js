@@ -2,6 +2,9 @@ import React from 'react';
 import List from './components/List'
 import AddList from './components/AddList';
 
+
+import DB from './assets/db.json';
+
 function App() {
   const [value, setValue] = React.useState('Hello world');
 
@@ -10,7 +13,6 @@ function App() {
   return (
     <div className="todo">
       <div className="todo__sidebar">
-        <button onClick={() => alert('')}>Обновить</button>
         <List items={[
           {
             icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +43,7 @@ function App() {
         isRemovable
         />
         
-        <AddList/>
+        <AddList colors={ DB.colors }/>
       </div>
       <div className="todo__tasks"></div>
     </div>
