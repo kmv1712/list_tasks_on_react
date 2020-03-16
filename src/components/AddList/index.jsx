@@ -30,6 +30,12 @@ const AddList = ({ colors }) => {
       isRemovable
       />
       {visiblePopup && (<div className="add-list__popup">
+        <img 
+          onClick={() => setVisiblePopup(false)} 
+          src={closeSvg}
+          alt="Close button"
+          className="add-list__popup-close-btn"
+        />
         <input className="field" type="text" placeholder="Название списка"/>
       <div className="add-list__popup-colors">
           {colors.map(color => (
