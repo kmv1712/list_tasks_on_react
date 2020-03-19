@@ -7,7 +7,14 @@ import Badge from '../Badge';
 
 import './List.scss';
 
-const List = ({ items, isRemovable, onClick }) => {
+const List = ({ items, isRemovable, onClick, onRemove }) => {
+
+  const removeList = item => {
+    if (window.confirm('Вы действительно хотите удалить список?')){
+      onRemove(item);
+    }
+  };
+
     return (
       <ul onClick={onClick} className="list">
           {items.map((item, index) => (
@@ -20,7 +27,13 @@ const List = ({ items, isRemovable, onClick }) => {
                   )}
                 </i>
                 <span>{ item.name }</span>
-                {isRemovable && <img className="list__remove-icon" src={removeSvg} alt='Remove icon' />}
+                {isRemovable && (
+                  <img
+                    className="list__remove-icon"
+                    src={removeSvg}
+                    alt='Remove icon'
+                    onClick = {() => removeList(item)}
+                  />)}
             </li>
           ))}        
       </ul>
