@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -8,7 +8,8 @@
   -moz-osx-font-smoothing: grayscale
 }
 
-.todo{
+.todo {
+  display: flex;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -19,26 +20,22 @@
   border-radius: 10px;
   border: 1px solid #f1f1f1;
 
-  &__sidebar{
+  &__sidebar {
     background-color: #f4f6f8;
     width: 200px;
     height: calc(100% - 120px);
     border-right: 1px solid #f1f1f1;
+    padding: 60px 20px;
+  }
+
+  &__tasks {
+    flex: 1;
     padding: 60px;
+    overflow: auto;
   }
 }
 
-.tasks{
-  &__title{
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 39px;
-    color: #64c4ed;
-    border-bottom: 1px solid #f2f2f2;
-  }
-}
-
-.button{
+.button {
   background: #4dd599;
   border-radius: 4px;
   color: #fff;
@@ -46,17 +43,17 @@
   padding: 10px 20px;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     background: darken(#4dd599, 5%);
   }
 
-  &:active{
+  &:active {
     background: darken(#4dd599, 5%);
   }
 }
 
 
-.field{
+.field {
   background: #ffffff;
   border: 1px solid #efefef;
   box-sizing: border-box;
@@ -64,7 +61,7 @@
   padding: 8px 12px;
   width: 100%;
 
-  &:focus{
+  &:focus {
     border-color: #dbdbdb;
   }
 }

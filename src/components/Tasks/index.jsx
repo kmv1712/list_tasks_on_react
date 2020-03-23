@@ -10,6 +10,15 @@ const Tasks = () => {
                     Фронтенд
                     <img src={editSvg} alt='Edit icon' />
                 </h2>
+
+                <div className="tasks__items">                   
+                    <input id="check" type="checkbox"/>
+                    <label htmlFor="check"></label>
+
+                    <div className = "tasks__items-row" >
+                        <input value="React Js fkjkfdvldfvdf"/>
+                    </div>                    
+                </div>
             </div>
         );
 };

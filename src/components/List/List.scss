@@ -23,6 +23,7 @@
       }
 
       #{$self}__remove-icon {
+        transition: opacity 0.15s ease-in-out;
         opacity: 0;
 
         &:hover {
