@@ -3,7 +3,9 @@ import editSvg from '../../assets/img/edit.svg';
 
 import './Tasks.scss';
 
-const Tasks = () => {
+const Tasks = ({ list }) => {
+    console.log( list );
+
         return (
             <div className="tasks">
                 <h2 className="tasks__title">
@@ -16,7 +18,7 @@ const Tasks = () => {
                     <label htmlFor="check"></label>
 
                     <div className = "tasks__items-row" >
-                        <input value="React Js fkjkfdvldfvdf"/>
+                        {/* <input value="React Js fkjkfdvldfvdf"/> */}
                     </div>                    
                 </div>
             </div>

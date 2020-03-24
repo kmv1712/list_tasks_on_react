@@ -41,4 +41,12 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 Установить json-server
 sudo npm install -g json-server
 
-Запустить json-server ./src/assets/db.json --port 3001
+Запустить json-server на 3001 порту.
+json-server ./src/assets/db.json --port 3001
+
+--watch перегружает изминения.
+json-server ./src/assets/db.json --watch --port 3001
+
+
+Мо
+npm install axios

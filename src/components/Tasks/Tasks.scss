@@ -38,7 +38,6 @@
                 font-size: 16px;
             }
         }
-
     }
 
     .checkbox{
@@ -47,7 +46,7 @@
         }
 
         svg {
-            transition: opacity 0.15s case-in-out;
+            transition: opacity 0.15s ease-in-out;
             path {
                 stroke: #f2f2f2;
             }
@@ -79,7 +78,7 @@
             widows: 20px;
             height: 20px;
             cursor: pointer;
-            transition: backgroun-color 0.15s case-in-out, border-color 0.15s case-in-out;
+            transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 
             svg{
                 position: relative;
