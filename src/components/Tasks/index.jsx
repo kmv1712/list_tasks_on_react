@@ -1,29 +1,47 @@
-import React from 'react';
-import editSvg from '../../assets/img/edit.svg';
+import React from "react";
+import editSvg from "../../assets/img/edit.svg";
 
-import './Tasks.scss';
+import "./Tasks.scss";
 
 const Tasks = ({ list }) => {
-    console.log( list );
+  console.log(list);
 
-        return (
-            <div className="tasks">
-                <h2 className="tasks__title">
-                    Фронтенд
-                    <img src={editSvg} alt='Edit icon' />
-                </h2>
+  return (
+    <div className="tasks">
+      <h2 className="tasks__title">
+        {list.name}
+        <img src={editSvg} alt="Edit icon" />
+      </h2>
 
-                <div className="tasks__items">                   
-                    <input id="check" type="checkbox"/>
-                    <label htmlFor="check"></label>
-
-                    <div className = "tasks__items-row" >
-                        {/* <input value="React Js fkjkfdvldfvdf"/> */}
-                    </div>                    
-                </div>
+      <div className="tasks__items">
+        {list.tasks.map(task => (
+          <div className="tasks__items-row">
+            <div className="checkbox">
+              <input id={`task-${task.id}`} type="checkbox" />
+              <label htmlFor={`task-${task.id}`}>
+                <svg
+                  width="11"
+                  height="8"
+                  viewBox="0 0 11 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.29999 1.20001L3.79999 6.70001L1.29999 4.20001"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </label>
             </div>
-        );
+            <input readOnly value={task.text}></input>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-
-export default Tasks; 
+export default Tasks;

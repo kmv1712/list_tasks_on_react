@@ -16,7 +16,7 @@ const AddList = ({ colors, onAdd }) => {
   const [isLoding, setIsLoding] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  const onClose = () => {
+  const onClose = () => { 
     setVisiblePopup(false);
     setInputValue('');
     selectColor(colors[0].id);
