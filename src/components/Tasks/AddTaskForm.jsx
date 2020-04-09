@@ -1,43 +1,65 @@
-import React, { Component, useState } from 'react';
-import addSvg from "../../assets/img/add.svg";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const AddTaskForm = ({list, onAddTask}) => {
-    const [visibleForm, setFormVisible] = useState(false);
-    const [inputValue, setInputValue] = useState('');
+import addSvg from '../../assets/img/add.svg';
 
-    const toggleFromVisible = () => {
-        setFormVisible(!visibleForm);
-        setInputValue('');
+const AddTaskForm = ({ list, onAddTask }) => {
+  const [visibleForm, setFormVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState('');
+
+  const toggleFormVisible = () => {
+    setFormVisible(!visibleForm);
+    setInputValue('');
+  };
+
+  const addTask = () => {
+    const obj = {
+      listId: list.id,
+      text: inputValue,
+      completed: false
     };
+    setIsLoading(true);
+    axios
+      .post('http://localhost:3001/tasks', obj)
+      .then(({ data }) => {
+        onAddTask(list.id, data);
+        toggleFormVisible();
+      })
+      .catch(e => {
+        alert('Ошибка при добавлении задачи!');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
-    const addTask = () => {
-        const obj = {
-            listId: list.id,
-            text: inputValue,
-            completed: false
-        };
-
-        onAddTask(list.id, obj);
-        toggleFromVisible();
-    };
-
-
-    return (
-        <div className="task__form">
-            {!visibleForm ? (
-            <div onClick={toggleFromVisible} className="task__form-new">
-                <img src={addSvg} alt="Add icon"/>
-                <span>Новая задача</span>
-            </div>
-            ) : (
-            <div className="task__form-block">
-                <input type="text" placeholder="Новая задача" value={inputValue} className="field" onChange={e => setInputValue(e.target.value)}/>
-                <button onClick={addTask} className="button">Добавить задачу</button>
-                <button onClick={toggleFromVisible} className="button button--grey">Отмена</button>
-            </div>
-            )}
+  return (
+    <div className="tasks__form">
+      {!visibleForm ? (
+        <div onClick={toggleFormVisible} className="tasks__form-new">
+          <img src={addSvg} alt="Add icon" />
+          <span>Новая задача</span>
         </div>
-    );
-}
+      ) : (
+        <div className="tasks__form-block">
+          <input
+            value={inputValue}
+            className="field"
+            type="text"
+            placeholder="Текст задачи"
+            onChange={e => setInputValue(e.target.value)}
+          />
+          <button disabled={isLoading} onClick={addTask} className="button">
+            {isLoading ? 'Добавление...' : 'Добавить задачу'}
+          </button>
+          <button onClick={toggleFormVisible} className="button button--grey">
+            Отмена
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default AddTaskForm;
